@@ -1,0 +1,16 @@
+{
+  "name": "scsite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "clear && nodemon node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "naxtjs": "^1.0.0"
+  }
+}
