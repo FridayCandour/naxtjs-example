@@ -5,19 +5,23 @@ const h = async function () {
     { className: "App" },
     header(
       { className: "App-header" },
-      img({ src: "/src/naxt.png", className: "App-logo", alt: "logo" }),
+      img({
+        src: "/src/naxt.png",
+        className: "App-logo",
+        alt: "logo",
+        onclick() {
+          console.log("hello people of the world");
+        },
+      }),
       p("Edit <code>src/index.js</code> and save and reload."),
       a(
         {
           className: "App-link",
-          href: "/",
+          href: "https://github.com/uiedbook/naxtjs",
           target: "_blank",
-          rel: "noopener noreferrer",
-          onclick() {
-            console.log("hello people of the world");
-          },
+          rel: "none follow",
         },
-        "Hello Thomas"
+        "visit docs"
       )
     ),
     // a simple way to add styles
@@ -45,6 +49,10 @@ const h = async function () {
 }
 .App-link {
   color: #61dafb;
+  text-decoration: none;
+  border-radius: 20px;
+  border: 1px blue solid;
+  padding: 8px 20px;
 }
     `)
   );
@@ -55,8 +63,12 @@ const s = new Screen({
   template: h,
   persist: false,
 });
-Router.BrowserRoutes({ "/home/:user": s });
-Router.BrowserRoutes({ "/": s });
+Router.BrowserRoutes({
+  "/": s,
+  "/p": () => {
+    return JSON.stringify({ name: "egg" });
+  },
+});
 Router.listen({ debug: true });
 
 // example visit http://127.0.0.1:3000/home/john
